@@ -9,19 +9,19 @@ function headerStick() {
   }
 }
 
+let plane = document.getElementById('plane');
+let footer = document.getElementById('footer');
+
 function movePlane() {
   let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-  let footer = document.getElementById('footer');
 
   if(scrollTop >= 40 && document.body.clientHeight - footer.clientHeight >= scrollTop + window.innerHeight / 2) {
-    let plane = document.getElementById('plane');
-
     let middle = scrollTop + window.innerHeight / 2;
 
     let planey = middle >= 1000 ? scrollTop - window.innerHeight / 2 : scrollTop / 2;
-    let planex = Math.sin(scrollTop / 120) * 40;
+    let planex = Math.sin(scrollTop / 160) * 20;
 
-    plane.style.transform = `translate(${planex}px,${planey}px) rotate(${-planex/2}deg)`;
+    plane.style.transform = `translate(${planex}px,${planey}px) rotate(${-planex / 6}deg)`;
   }
 }
 
@@ -182,3 +182,77 @@ document.getElementById('banner').addEventListener('mouseout', () => {
   if(img.classList.contains('banner-image-hover'))
     img.classList.remove('banner-image-hover');
 })
+
+function magnify(imgID, zoom) {
+  let img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+
+  glass = document.createElement("div");
+  glass.id = 'img-magnifier-glass';
+
+  img.parentElement.insertBefore(glass, img);
+
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.opacity = "0";
+
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+
+  /*mouse*/
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+
+  img.addEventListener("mouseover", inMagnifier);
+  img.addEventListener("mouseout", outMagnifier);
+  glass.addEventListener("mouseover", inMagnifier);
+  glass.addEventListener("mouseout", outMagnifier);
+
+  function inMagnifier() {
+    glass.style.opacity = "1";
+  }
+
+  function outMagnifier() {
+    glass.style.opacity = "0";
+  }
+
+  /*touch screen*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+
+  function moveMagnifier(e) {
+    let pos, x, y;
+
+    e.preventDefault();
+
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom)};
+    if (x < w / zoom) {x = w / zoom};
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom)};
+    if (y < h / zoom) {y = h / zoom};
+
+    glass.style.transform = `translate(${x - w}px,${y}px)`;
+
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w * 2 + bw) + "px -"
+                                     + ((y * zoom) - h + bw) + "px";
+  }
+
+  function getCursorPos(e) {
+    let a, x = 0, y = 0;
+
+    e = e || window.event;
+    a = img.getBoundingClientRect();
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+
+    return {x : x, y : y};
+  }
+}
+
+magnify("map-img", 3)
