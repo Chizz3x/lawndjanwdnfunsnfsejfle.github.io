@@ -185,76 +185,22 @@ document.getElementById('banner').addEventListener('mouseout', () => {
     img.classList.remove('banner-image-hover');
 })
 
-function magnify(imgID, zoom) {
-  let img, glass, w, h, bw;
-  img = document.getElementById(imgID);
+let zoomCloses = document.getElementsByClassName('zoom-close');
+for(let i = 0; i < zoomCloses.length; i++)
+  zoomCloses[i].addEventListener('mousedown', function() {
+    let cont = document.getElementById('zoom-container');
 
-  glass = document.createElement("div");
-  glass.id = 'img-magnifier-glass';
+    document.body.classList.remove('disable-scroll');
+    cont.classList.add('zoom-container-inactive');
+  })
 
-  img.parentElement.insertBefore(glass, img);
+let zoomables = document.getElementsByClassName('info-image');
+for(let i = 0; i < zoomables.length; i++)
+  zoomables[i].addEventListener('mousedown', function(e) {
+    let cont = document.getElementById('zoom-container');
+    let img = document.getElementById('zoom-image');
 
-  glass.style.backgroundImage = "url('" + img.src + "')";
-  glass.style.backgroundRepeat = "no-repeat";
-  glass.style.opacity = "0";
-
-  bw = 3;
-  w = glass.offsetWidth / 2;
-  h = glass.offsetHeight / 2;
-
-  /*mouse*/
-  glass.addEventListener("mousemove", moveMagnifier);
-  img.addEventListener("mousemove", moveMagnifier);
-
-  img.addEventListener("mouseover", inMagnifier);
-  img.addEventListener("mouseout", outMagnifier);
-  glass.addEventListener("mouseover", inMagnifier);
-  glass.addEventListener("mouseout", outMagnifier);
-
-  function inMagnifier() {
-    glass.style.opacity = "1";
-  }
-
-  function outMagnifier() {
-    glass.style.opacity = "0";
-  }
-
-  /*touch screen*/
-  glass.addEventListener("touchmove", moveMagnifier);
-  img.addEventListener("touchmove", moveMagnifier);
-
-  function moveMagnifier(e) {
-    let pos, x, y;
-
-    e.preventDefault();
-
-    pos = getCursorPos(e);
-    x = pos.x;
-    y = pos.y;
-
-    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom)};
-    if (x < w / zoom) {x = w / zoom};
-    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom)};
-    if (y < h / zoom) {y = h / zoom};
-
-    glass.style.transform = `translate(${x - w}px,${y}px)`;
-
-    glass.style.backgroundPosition = "-" + ((x * zoom) - w * 2 + bw) + "px -"
-                                     + ((y * zoom) - h + bw) + "px";
-  }
-
-  function getCursorPos(e) {
-    let a, x = 0, y = 0;
-
-    e = e || window.event;
-    a = img.getBoundingClientRect();
-    x = e.pageX - a.left;
-    y = e.pageY - a.top;
-    x = x - window.pageXOffset;
-    y = y - window.pageYOffset;
-
-    return {x : x, y : y};
-  }
-}
-
-magnify("map-img", 3)
+    img.src = e.target.src;
+    document.body.classList.add('disable-scroll');
+    cont.classList.remove('zoom-container-inactive');
+  });

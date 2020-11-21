@@ -88,7 +88,7 @@ body {
   border: none;
   transition: background-color .2s, border-bottom .2s;
   cursor: pointer;
-  background-color: rgba(0,0,0,.05);
+  background-color: rgba(200,200,250,.3);
 }
 .header-btn:hover {
   transition: background-color .5s, border-bottom .5s;
@@ -340,7 +340,8 @@ body {
   outline: none;
 }
 #sub-btn:hover {
-  background-color: rgb(238,80,80)
+  background-color: rgb(238,80,80);
+  text-decoration: underline
 }
 #sub-btn {
   font-family: sans-serif;
@@ -352,7 +353,8 @@ body {
   color: white;
   border: none;
   display: block;
-  background-color: rgb(238,6,6)
+  background-color: rgb(238,6,6);
+  cursor: pointer;
 }
 
 #loc-box .link {
@@ -378,4 +380,71 @@ body {
 #community-list li a img {
   height: 48px;
   transition: transform .5s
+}
+
+#zoom-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(10,10,10,.8);
+  z-index: 101;
+  transition: opacity .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#zoom-image {
+  height: 99%
+}
+
+.zoom-close {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  margin-right: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#zoom-close-left {
+  top: 0;
+  left: 0;
+}
+
+#zoom-close-right {
+  top: 0;
+  right: 0;
+}
+
+.zoom-close svg {
+  fill: rgba(200,200,200,.8);
+  display: block;
+  margin: auto;
+  transition: fill .2s
+}
+.zoom-close p {
+  color: rgba(200,200,200,.8);
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  transition: color .2s
+}
+
+.zoom-close:hover svg {
+  fill: rgba(255,255,255,.8)
+}
+.zoom-close:hover p {
+  color: rgba(255,255,255,.8)
+}
+
+.zoom-container-inactive {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.disable-scroll {
+  overflow: hidden
 }
