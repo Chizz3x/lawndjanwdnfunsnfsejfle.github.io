@@ -15,10 +15,12 @@ let footer = document.getElementById('footer');
 function movePlane() {
   let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
 
-  if(scrollTop >= 40 && document.body.clientHeight - footer.clientHeight >= scrollTop + window.innerHeight / 2) {
-    let middle = scrollTop + window.innerHeight / 2;
+  if(document.body.clientHeight - footer.clientHeight >= scrollTop + window.innerHeight / 2) {
+    let accel = Math.pow(1.5, -(Math.round(scrollTop) / 1000)) * 4;
 
-    let planey = middle >= 1000 ? scrollTop - window.innerHeight / 2 : scrollTop / 2;
+    let planey = scrollTop - window.innerHeight / accel;
+    if(0 > planey) planey = 0;
+
     let planex = Math.sin(scrollTop / 160) * 20;
 
     plane.style.transform = `translate(${planex}px,${planey}px) rotate(${-planex / 6}deg)`;
@@ -57,13 +59,13 @@ let bannerInfo = [
 
 const bannerInfoText = {
   0: {
-    title: 'Some long title here',
-    desc: 'Some long long long long a dad description here'
+    title: 'Some title here',
+    desc: 'Some description here'
     //html: '<html script here to add plain html, buttons etc...>'
   },
   1: {
     title: 'Some title here again',
-    desc: 'Some description here once again d w a w d a d w d a w d w w d w adw dawdawdadawdawd'
+    desc: 'Some description here once again'
   }
 };
 

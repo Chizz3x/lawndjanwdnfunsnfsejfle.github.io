@@ -79,7 +79,9 @@ body {
 }
 
 .header-btn {
-  width: 100px;
+  width: auto;
+  padding-left: 30px;
+  padding-right: 30px;
   height: 50px;
   margin-top: 20px;
   margin-left: 20px;
@@ -102,6 +104,7 @@ body {
   overflow: hidden;
   height: 500px;
   border-top: 5px solid rgb(100,100,200);
+  z-index: 2
 }
 
 .banner-image {
@@ -138,23 +141,37 @@ body {
   cursor: pointer;
   top: 50%;
 }
+#banner-button-left svg g,
+#banner-button-right svg g {
+  transition: fill .5s;
+}
 #banner-button-right:hover,
 #banner-button-left:hover {
   background-color: rgba(20,20,20,.3);
 }
+#banner-button-left:hover svg g,
+#banner-button-right:hover svg g {
+  fill: rgba(255,255,255,.5);
+}
 #banner-button-right {
   right: 0;
-  border-radius: 50px 0 0 50px
+  border-radius: 50px 0 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #banner-button-left {
-  border-radius: 0 50px 50px 0
+  border-radius: 0 50px 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner-info {
   position: absolute;
   top: 40%;
   z-index: 1;
-  margin-left: 30px;
+  margin-left: 50px;
   transition: opacity 3s;
   display: inline-block;
 }
@@ -173,18 +190,23 @@ body {
   background-color: rgba(20,20,20,.5);
   word-wrap: break-word;
   width: 80%;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #plane {
-  position: absolute;
   z-index: 1;
-  left: 46%;
   transition: transform .5s cubic-bezier(0.32, 0.63, 0.49, 1.07);
+  margin: auto;
+  width: 80px;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 #plane-img {
   height: 80px;
   transform: rotate(180deg);
-  position: absolute;
 }
 
 #info-container-1 {
@@ -272,8 +294,8 @@ body {
   background-color: rgb(240,240,240);
   width: 100%;
   height: 1200px;
-  padding-left: 20px;
-  padding-right: 20px;
+  color: black;
+  padding-top: 50px;
 }
 #footer-header {
   background-color: rgb(240,240,240);
@@ -283,20 +305,19 @@ body {
 }
 #footer-left {
   height: 100%;
-  width: 50%;
+  padding-left: 1%;
+  width: 49%;
   display: inline-block;
 }
 #footer-right {
   float: right;
   height: 100%;
-  width: 50%;
+  padding-right: 1%;
+  width: 49%;
 }
 
-#fb-box,
-#follow-box,
-#web-stat-box,
-#map-box {
-  color: black;
+#footer-right * {
+  text-align: center;
 }
 
 #fb-box,
@@ -342,4 +363,19 @@ body {
 #loc-box .link:hover {
   color: rgb(230,60,60);
   text-decoration: underline;
+}
+
+#community-list li {
+  display: inline;
+  margin-right: 30px;
+}
+#community-list li a img:hover {
+  transform: scale(1.2);
+}
+#community-list li a {
+  text-decoration: none;
+}
+#community-list li a img {
+  height: 48px;
+  transition: transform .5s
 }
