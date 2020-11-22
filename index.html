@@ -5,6 +5,7 @@
     <title>Travel agency</title>
 
     <link rel="stylesheet" href="styles/index.css"></link>
+    <link rel="stylesheet" href="global-styles/index.css"></link>
   </head>
 
   <body>
@@ -25,16 +26,16 @@
       </div>
 
       <div id="header-items-box">
-        <button class="header-btn">
+        <button class="header-btn" onmousedown="goHome">
           Home
         </button>
-        <button class="header-btn">
+        <button class="header-btn" onmousedown="goAbout">
           About
         </button>
-        <button class="header-btn">
+        <button class="header-btn" onmousedown="goTravel">
           Travel and tourism
         </button>
-        <button class="header-btn">
+        <button class="header-btn" onmousedown="goConstr">
           Constructions
         </button>
       </div>
@@ -242,5 +243,6 @@
     </div>
 
     <script language="Javascript" src="scripts/index.js"></script>
+    <script language="Javascript" src="global-scripts/index.js"></script>
   </body>
 </html>

@@ -1,14 +1,3 @@
-function headerStick() {
-  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-  let menu = document.getElementById('header');
-
-  if(scrollTop <= 52 && menu.classList.contains('header-sticky')) {
-    menu.classList.remove('header-sticky')
-  } else if(scrollTop > 52 && !menu.classList.contains('header-sticky')) {
-    menu.classList.add('header-sticky')
-  }
-}
-
 let plane = document.getElementById('plane');
 let footer = document.getElementById('footer');
 
@@ -27,12 +16,7 @@ function movePlane() {
   }
 }
 
-let homeLinks = document.getElementsByClassName('home-link');
-for(let i = 0; i < homeLinks.length; i++)
-  homeLinks[i].href = window.location.origin;
-
 window.onscroll = function() {
-  headerStick();
   movePlane();
 }
 
