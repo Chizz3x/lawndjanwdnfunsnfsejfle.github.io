@@ -1,7 +1,7 @@
 let plane = document.getElementById('plane');
 let footer = document.getElementById('footer');
 
-function movePlane() {
+movePlane = function() {
   let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
 
   if(document.body.clientHeight - footer.clientHeight >= scrollTop + window.innerHeight / 2) {
@@ -14,10 +14,6 @@ function movePlane() {
 
     plane.style.transform = `translate(${planex}px,${planey}px) rotate(${-planex / 6}deg)`;
   }
-}
-
-window.onscroll = function() {
-  movePlane();
 }
 
 window.addEventListener('mousemove', e => {
@@ -170,21 +166,24 @@ document.getElementById('banner').addEventListener('mouseout', () => {
 })
 
 let zoomCloses = document.getElementsByClassName('zoom-close');
+let zoomCloseBg = document.getElementById('zoom-container');
+
+zoomCloseBg.addEventListener('mousedown', function() {
+  document.body.classList.remove('disable-scroll');
+  zoomCloseBg.classList.add('zoom-container-inactive');
+})
 for(let i = 0; i < zoomCloses.length; i++)
   zoomCloses[i].addEventListener('mousedown', function() {
-    let cont = document.getElementById('zoom-container');
-
     document.body.classList.remove('disable-scroll');
-    cont.classList.add('zoom-container-inactive');
+    zoomCloseBg.classList.add('zoom-container-inactive');
   })
 
 let zoomables = document.getElementsByClassName('info-image');
 for(let i = 0; i < zoomables.length; i++)
   zoomables[i].addEventListener('mousedown', function(e) {
-    let cont = document.getElementById('zoom-container');
     let img = document.getElementById('zoom-image');
 
     img.src = e.target.src;
     document.body.classList.add('disable-scroll');
-    cont.classList.remove('zoom-container-inactive');
+    zoomCloseBg.classList.remove('zoom-container-inactive');
   });

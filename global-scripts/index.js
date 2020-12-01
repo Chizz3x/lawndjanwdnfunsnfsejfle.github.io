@@ -11,6 +11,7 @@ function headerStick() {
 
 window.onscroll = function() {
   headerStick();
+  if(typeof movePlane !== 'undefined') movePlane();
 }
 
 let homeLinks = document.getElementsByClassName('home-link');
@@ -32,3 +33,7 @@ function goTravel() {
 function goConstr() {
   window.location.href = window.location.origin + '/constructions'
 }
+
+let homeIcon = document.getElementById('logo');
+if(!!homeIcon)
+  homeIcon.src = window.location.origin+'/data/shaayaa.jpg';

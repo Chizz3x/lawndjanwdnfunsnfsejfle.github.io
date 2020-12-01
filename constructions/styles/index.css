@@ -21,9 +21,141 @@
   background-color: rgb(240,240,240);
   left: 0;
   right: 0;
-  height: 600px;
+  height: 440px;
 }
 #info-container-2 .info-box {
   height: 100%;
   width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#info-container-2 .info-box .left-blur {
+  height: 400px;
+  width: 300px;
+  background-image: linear-gradient(to right, rgb(240,240,240) 20%, transparent);
+  position: absolute;
+  z-index: 1;
+}
+#info-container-2 .info-box .right-blur {
+  height: 400px;
+  width: 300px;
+  background-image: linear-gradient(to left, rgb(240,240,240) 20%, transparent);
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+#info-container-3 {
+  background-color: rgb(100,100,200);
+  left: 0;
+  right: 0;
+  height: 200px;
+}
+#info-container-3 ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+#info-container-3 ul li {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: background-color .4s;
+}
+#info-container-3 ul li a {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#info-container-3 ul li a svg g path {
+  fill: white
+}
+
+.share-twitter:hover {
+  background-color: rgb(50, 180, 245)
+}
+.share-twitter {
+  background-color: rgb(0, 172, 238)
+}
+.share-twitter a svg {
+  height: 25px;
+}
+.share-facebook a svg {
+  height: 25px;
+}
+
+.share-facebook:hover {
+  background-color: rgb(40, 130, 255)
+}
+.share-facebook {
+  background-color: rgb(24, 119, 242)
+}
+
+.middle-text {
+  margin-top: 0;
+  padding-top: 20px;
+  width: 800px;
+  font-size: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#row-img-container li img {
+  height: 400px;
+}
+#row-img-container li {
+  display: inline;
+  height: 400px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#row-img-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  transition: transform .5s
+}
+
+.info-box {
+  position: relative;
+}
+.img-btn {
+  width: 40px;
+  height: 80px;
+  background-color: rgba(20,20,20,.1);
+  position: absolute;
+  top: 40%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.img-btn svg g {
+  transition: fill .5s;
+}
+.img-btn:hover svg g {
+  fill: rgba(255,255,255,.5);
+}
+.img-btn:hover {
+  background-color: rgba(20,20,20,.3);
+}
+#right-img-btn {
+  right: 0;
+  border-radius: 50px 0 0 50px;
+}
+#left-img-btn {
+  border-radius: 0 50px 50px 0;
 }

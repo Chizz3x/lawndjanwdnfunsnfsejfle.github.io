@@ -38,6 +38,9 @@
   transition: background-color .5s;
   cursor: pointer;
   top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #banner-button-left svg g,
 #banner-button-right svg g {
@@ -54,15 +57,9 @@
 #banner-button-right {
   right: 0;
   border-radius: 50px 0 0 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 #banner-button-left {
   border-radius: 0 50px 50px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .banner-info {
@@ -195,47 +192,7 @@
 }
 
 #zoom-image {
-  height: 99%
-}
-
-.zoom-close {
-  position: absolute;
-  height: 80px;
-  width: 80px;
-  margin-right: 20px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-#zoom-close-left {
-  top: 0;
-  left: 0;
-}
-
-#zoom-close-right {
-  top: 0;
-  right: 0;
-}
-
-.zoom-close svg {
-  fill: rgba(200,200,200,.8);
-  display: block;
-  margin: auto;
-  transition: fill .2s
-}
-.zoom-close p {
-  color: rgba(200,200,200,.8);
-  margin-top: 10px;
-  text-align: center;
-  font-size: 13px;
-  transition: color .2s
-}
-
-.zoom-close:hover svg {
-  fill: rgba(255,255,255,.8)
-}
-.zoom-close:hover p {
-  color: rgba(255,255,255,.8)
+  height: 99%;
 }
 
 .zoom-container-inactive {
