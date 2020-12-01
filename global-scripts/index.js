@@ -36,4 +36,4 @@ function goConstr() {
 
 let homeIcon = document.getElementById('logo');
 if(!!homeIcon)
-  homeIcon.src = window.location.origin+'/data/shaayaa.jpg';
+  homeIcon.src = 'https://chizz3x.github.io/lawndjanwdnfunsnfsejfle.github.io/data/shaayaa.jpg';
