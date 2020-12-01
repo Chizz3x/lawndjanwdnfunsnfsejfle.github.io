@@ -21,6 +21,9 @@ const imagesRow = [
   'https://shaayacompany.files.wordpress.com/2020/02/83697101_211790096529397_184752777061203968_n.jpg?w=1250&h='
 ]
 
+const images1Length = 20,
+      images2Length = 19;
+
 let imageRowCont = document.getElementById('row-img-container');
 
 let ind = 1,
@@ -37,8 +40,8 @@ function generateRowImage(src) {
   return li;
 }
 
-for(let i = 0; i < imagesRow.length; i++) {
-  imageRowCont.appendChild(generateRowImage(imagesRow[i]));
+for(let i = 1; i <= images1Length.length; i++) {
+  imageRowCont.appendChild(generateRowImage(`../../../data/constructions-images/1/1 (${i}).jpg`));
 }
 
 document.getElementById('right-img-btn').addEventListener('mousedown', function() {
@@ -48,9 +51,6 @@ document.getElementById('right-img-btn').addEventListener('mousedown', function(
   imageRowCont.style.transform = `translateX(${pos - rect.width}px)`;
   pos -= rect.width;
   ind++;
-  /*last = !imagesRow[last + 1] ? 1 : last + 1;
-  imageRowCont.prepend(generateRowImage(imagesRow[last]));
-  imageRowCont.removeChild(imageRowCont.children[imageRowCont.children.length - 1]);*/
 })
 
 document.getElementById('left-img-btn').addEventListener('mousedown', function() {
@@ -60,7 +60,4 @@ document.getElementById('left-img-btn').addEventListener('mousedown', function()
   imageRowCont.style.transform = `translateX(${pos + rect.width}px)`;
   pos += rect.width;
   ind--;
-  /*last = last - 1 < 1 ? imagesRow.length - 1 : last - 1;
-  imageRowCont.append(generateRowImage(imagesRow[last]));
-  imageRowCont.removeChild(imageRowCont.children[0]);*/
 })
